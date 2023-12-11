@@ -1,0 +1,51 @@
+.article-teaser-container {
+ border: 3px solid green;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-areas:
+    'image image blank author'
+    'image image title title'
+    'topic date comments votes';
+  
+  background-color: #38ab94;
+  ;
+}
+
+.teaser-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 2px solid rgb(212, 195, 195);
+}
+
+.article-image {
+    border: 3px solid black;
+    width: 300px;
+    height: 200px;
+    grid-area: image;
+}
+
+.article-title {
+    grid-area: title;
+}
+
+.article-topic{
+    grid-area: topic;
+}
+
+
+.article-date {
+    grid-area: date;
+}
+
+.article-author {
+    grid-area: author;
+}
+
+.article-comment-count {
+    grid-area: comments;
+}
+
+.article-votes {
+    grid-area: votes;
+}

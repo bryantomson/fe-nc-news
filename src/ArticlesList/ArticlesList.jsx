@@ -2,27 +2,27 @@ import "./ArticlesList.css";
 import { getArticles } from "../api";
 import { useEffect, useState } from "react";
 import ArticleTeaser from "../ArticleTeaser/ArticleTeaser";
-import { Link } from "react-router-dom";
 
-export default function ArticlesList({ articles, setArticles }) {
-  const [listLoading, setListLoading] = useState(true);
+export default function ArticlesList({ articles, setArticles, isLoading, setIsLoading }) {
+
 
   useEffect(() => {
+    setIsLoading(true)
     getArticles().then((res) => {
       setArticles(res);
-      setListLoading(false);
+      setIsLoading(false);
     });
   }, []);
 
-  if (listLoading) {
+  if (isLoading) {
     return <h1>Loading...</h1>;
   } else
     return (
       <div id="articles-list">
         {articles.map((article) => {
           return (
-            <div key={(article.article_id)}>
-              <ArticleTeaser article={article} setArticles={setArticles} />
+            <div key={article.article_id}>
+              <ArticleTeaser article={article} />
             </div>
           );
         })}

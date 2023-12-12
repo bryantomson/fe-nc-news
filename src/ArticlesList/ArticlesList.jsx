@@ -5,29 +5,27 @@ import ArticleTeaser from "../ArticleTeaser/ArticleTeaser";
 import { Link } from "react-router-dom";
 
 export default function ArticlesList({ articles, setArticles }) {
-const [listLoading, setListLoading] = useState(true)
-
+  const [listLoading, setListLoading] = useState(true);
 
   useEffect(() => {
     getArticles().then((res) => {
       setArticles(res);
-      setListLoading(false)
+      setListLoading(false);
     });
   }, []);
 
-  if(listLoading) {
-    return <h1>Loading...</h1>
-  } else return (
-    <div id="articles-list">
-      {articles.map((article) => {
-        return (
-         
-            <div key={article.article_id}>
-              <ArticleTeaser article={article} />
+  if (listLoading) {
+    return <h1>Loading...</h1>;
+  } else
+    return (
+      <div id="articles-list">
+        {articles.map((article) => {
+          return (
+            <div key={(article.article_id)}>
+              <ArticleTeaser article={article} setArticles={setArticles} />
             </div>
-         
-        );
-      })}
-    </div>
-  );
+          );
+        })}
+      </div>
+    );
 }

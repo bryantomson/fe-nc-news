@@ -17,3 +17,14 @@ export function getArticleById(article_id) {
    return article
   });
 }
+export function patchArticleById(article_id, inc) {
+
+console.log(inc, "INC")
+  const patchBody = {
+    "inc_votes": inc
+  }
+
+  return ncNewsAPI.patch(`/articles/${article_id}`, patchBody).then((res) => {
+  return res.data.updated
+  });
+}

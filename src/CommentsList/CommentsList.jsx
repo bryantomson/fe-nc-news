@@ -19,7 +19,7 @@ export default function CommentsList({ article }) {
    
         <ul className="comments-list">
               {comments.map((comment) => {
-                return <li > {<Comment comment={comment} />}</li>
+                return <li key={comment.comment_id} > {<Comment comment={comment} />}</li>
               })}
         
         </ul>

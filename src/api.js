@@ -24,8 +24,6 @@ export function getCommentsByArticleId(article_id) {
   });
 }
 export function patchArticleById(article_id, inc) {
-
-console.log(inc, "INC")
   const patchBody = {
     "inc_votes": inc
   }

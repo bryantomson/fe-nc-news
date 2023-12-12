@@ -34,6 +34,7 @@ function App() {
               setIsLoading={setIsLoading}
               article={article}
               setArticle={setArticle}
+              setArticles={setArticles}
             />
           }
         />

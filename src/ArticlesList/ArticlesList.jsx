@@ -22,7 +22,7 @@ export default function ArticlesList({ articles, setArticles, isLoading, setIsLo
         {articles.map((article) => {
           return (
             <div key={article.article_id}>
-              <ArticleTeaser article={article} />
+              <ArticleTeaser setArticles={setArticles} article={article} />
             </div>
           );
         })}

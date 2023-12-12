@@ -1,25 +1,9 @@
-import { patchArticleById } from "../api";
+import ArticleVoteButtons from "../ArticleVoteButtons/ArticleVoteButtons";
 import "./ArticleTeaser.css";
 import { Link } from "react-router-dom";
 
 export default function ArticleTeaser({ article, setArticles }) {
-  function incArticleVotes(inc) {
-    setArticles((currArticles) => {
-      return [...currArticles].map((currArticle) => {
-        return { ...currArticle, votes: currArticle.votes + inc };
-      });
-    });
-
-    patchArticleById(article.article_id, inc).catch((err) => {
-      if (err) {
-        setArticles((currArticles) => {
-          return [...currArticles].map((currArticle) => {
-            return { ...currArticle, votes: currArticle.votes - inc };
-          });
-        });
-      }
-    });
-  }
+  
 
   return (
     <div className="article-teaser-container">
@@ -42,26 +26,11 @@ export default function ArticleTeaser({ article, setArticles }) {
           <div className="teaser-item article-votes">
             Votes: {article.votes}
             <div className="vote-buttons">
-              <div
-                className="upvote"
-                onClick={() => {
-                  incArticleVotes(1);
-                }}
-              >
-                ⬆️
-              </div>{" "}
-              <div
-                className="downvote"
-                onClick={() => {
-                  incArticleVotes(-1);
-                }}
-              >
-                ⬇️
+             <ArticleVoteButtons article={article} setArticles={setArticles}/>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   );
 }

@@ -26,3 +26,21 @@
     flex-direction: row;
     justify-content: center;
 }
+
+#article-body {
+ text-align: left;
+}
+
+#article-foot {
+    display: flex;
+    vertical-align: right;
+    flex-direction: row;
+    justify-content: space-around
+}
+
+#votes-in-article{
+    display: flex;
+    
+   
+
+}

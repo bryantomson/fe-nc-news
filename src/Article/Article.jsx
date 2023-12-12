@@ -4,8 +4,9 @@ import { getArticleById } from "../api";
 import "./Article.css"
 import CommentsList from "../CommentsList/CommentsList";
 import Collapsible from "../Collapsible/Collapsible";
+import ArticleVoteButtons from "../ArticleVoteButtons/ArticleVoteButtons";
 
-export default function Article({article, setArticle, isLoading, setIsLoading}) {
+export default function Article({article, setArticle, isLoading, setIsLoading, setArticles}) {
 
     const {article_id} = useParams()
 
@@ -22,20 +23,32 @@ if (isLoading){
 } else return (
   <div id="article-container">
     <div id="article-header">
-      <div id="article-topic-head">{article.topic} </div> <div id="article-date">{article.created_at.slice(0, -14)}</div>
+      <div id="article-topic-head">{article.topic} </div>{" "}
+      <div id="article-date">{article.created_at.slice(0, -14)}</div>
     </div>
     <h1>{article.title}</h1>
     <div id="author-container">
       <p>{article.author}</p>
     </div>
-    <img id="article-image"src={article.article_img_url} />
-    <p>{article.body}</p>
+    <img id="article-image" src={article.article_img_url} />
+    <p id="article-body">{article.body}</p>
 
-     Comments ({article.comment_count})
-      <Collapsible>
-        <div><CommentsList isLoading={isLoading} setIsLoading={setIsLoading} article={article} /></div>
-      </Collapsible>
-    
+    <div id="article-foot">
+      <div id="comments-in-article">
+        Comments ({article.comment_count})
+        <Collapsible>
+          <CommentsList
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+            article={article}
+          />
+        </Collapsible>
+      </div>
+      <div id="votes-in-article">
+        Votes: {article.votes}
+        <ArticleVoteButtons inArticle={true} article={article} setArticle={setArticle}/>
+      </div>
+    </div>
   </div>
 );
 }

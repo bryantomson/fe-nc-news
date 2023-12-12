@@ -1,0 +1,28 @@
+#article-container{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 3%;
+}
+
+#author-container {
+    text-align: left;
+    padding-left: 3%;
+
+}
+
+#article-header{
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+    padding-left: 3%;
+}
+
+#comment-header{
+    display: flex;
+    font-weight: 700;
+    padding: 2%;
+    flex-direction: row;
+    justify-content: center;
+}

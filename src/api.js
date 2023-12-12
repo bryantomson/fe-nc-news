@@ -17,3 +17,9 @@ export function getArticleById(article_id) {
    return article
   });
 }
+export function getCommentsByArticleId(article_id) {
+  return ncNewsAPI.get(`/articles/${article_id}/comments`).then((res) => {
+    const { comments } = res.data;
+   return comments
+  });
+}

@@ -1,0 +1,56 @@
+.article-teaser-container {
+  margin-bottom: 10%;
+  padding: 3%;
+  background-color: rgb(255, 248, 224);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 60vw;
+}
+
+.teaser-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.article-image {
+  width: 98%;
+}
+
+.article-title {
+  font-size: 1.7rem;
+  text-align: left;
+}
+
+.article-link {
+  text-decoration: none;
+}
+
+.article-topic {
+  padding-top: 3%;
+  font-size: 1.2rem;
+  color: coral;
+  padding-bottom: 3%;
+  text-align: left;
+}
+
+.article-date {
+}
+
+.article-author {
+  font-size: 0.7em;
+}
+
+.votes-comments {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.article-comment-count {
+  margin-left: 3%;
+}
+
+.article-votes {
+}

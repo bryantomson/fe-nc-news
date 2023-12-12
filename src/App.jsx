@@ -1,14 +1,29 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import Header from "./Header/Header";
+import Home from "./Home/Home";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Article from "./Article/Article";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [articles, setArticles] = useState([]);
+  const [article, setArticle] = useState([]);
 
   return (
-    <>
-       <h1>HELLO!</h1>
-    </>
-  )
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route
+          path="/"
+          element={<Home articles={articles} setArticles={setArticles} />}
+        />
+        <Route
+          path="/:article_id"
+          element={<Article article={article} setArticle={setArticle} />}
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

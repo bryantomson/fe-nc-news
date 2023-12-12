@@ -1,51 +1,56 @@
 .article-teaser-container {
- border: 3px solid green;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-template-areas:
-    'image image blank author'
-    'image image title title'
-    'topic date comments votes';
-  
-  background-color: #38ab94;
-  ;
+  margin-bottom: 10%;
+  padding: 3%;
+  background-color: rgb(255, 248, 224);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 60vw;
 }
 
-.teaser-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border: 2px solid rgb(212, 195, 195);
+.teaser-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .article-image {
-    border: 3px solid black;
-    min-width: 250px;
-    max-width: 40%;
-    grid-area: image;
+  width: 98%;
 }
 
 .article-title {
-    grid-area: title;
+  font-size: 1.7rem;
+  text-align: left;
 }
 
-.article-topic{
-    grid-area: topic;
+.article-link {
+  text-decoration: none;
 }
 
+.article-topic {
+  padding-top: 3%;
+  font-size: 1.2rem;
+  color: coral;
+  padding-bottom: 3%;
+  text-align: left;
+}
 
 .article-date {
-    grid-area: date;
 }
 
 .article-author {
-    grid-area: author;
+  font-size: 0.7em;
+}
+
+.votes-comments {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .article-comment-count {
-    grid-area: comments;
+  margin-left: 3%;
 }
 
 .article-votes {
-    grid-area: votes;
 }

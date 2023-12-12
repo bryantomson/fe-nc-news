@@ -9,6 +9,7 @@ import Article from "./Article/Article";
 function App() {
   const [articles, setArticles] = useState([]);
   const [article, setArticle] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <BrowserRouter>
@@ -16,11 +17,25 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home articles={articles} setArticles={setArticles} />}
+          element={
+            <Home
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+              articles={articles}
+              setArticles={setArticles}
+            />
+          }
         />
         <Route
           path="/:article_id"
-          element={<Article article={article} setArticle={setArticle} />}
+          element={
+            <Article
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+              article={article}
+              setArticle={setArticle}
+            />
+          }
         />
       </Routes>
     </BrowserRouter>

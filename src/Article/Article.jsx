@@ -5,19 +5,19 @@ import "./Article.css"
 import CommentsList from "../CommentsList/CommentsList";
 import Collapsible from "../Collapsible/Collapsible";
 
-export default function Article({article, setArticle}) {
-    const [loading, setLoading] = useState(true)
+export default function Article({article, setArticle, isLoading, setIsLoading}) {
 
     const {article_id} = useParams()
 
 useEffect(() => {
+  setIsLoading(true)
   getArticleById(article_id).then((res) => {
     setArticle(res)
-    setLoading(false)
+    setIsLoading(false)
 });
 }, []);
 
-if (loading){
+if (isLoading){
     return <h1>Loading...</h1>
 } else return (
   <div id="article-container">
@@ -33,7 +33,7 @@ if (loading){
 
      Comments ({article.comment_count})
       <Collapsible>
-        <div><CommentsList article={article} /></div>
+        <div><CommentsList isLoading={isLoading} setIsLoading={setIsLoading} article={article} /></div>
       </Collapsible>
     
   </div>

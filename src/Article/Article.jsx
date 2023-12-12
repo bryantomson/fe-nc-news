@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getArticleById } from "../api";
-import "./article.css"
-
+import "./Article.css"
+import CommentsList from "../CommentsList/CommentsList";
+import Collapsible from "../Collapsible/Collapsible";
 
 export default function Article({article, setArticle}) {
     const [loading, setLoading] = useState(true)
@@ -29,9 +30,12 @@ if (loading){
     </div>
     <img id="article-image"src={article.article_img_url} />
     <p>{article.body}</p>
-    {console.log(article)}
-    <h2>Comments ({article.comment_count})</h2>
-    <div>Comments component will go here</div>
+
+     Comments ({article.comment_count})
+      <Collapsible>
+        <div><CommentsList article={article} /></div>
+      </Collapsible>
+    
   </div>
 );
 }

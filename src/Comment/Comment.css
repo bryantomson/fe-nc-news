@@ -1,0 +1,33 @@
+#comment-container {
+  border: 1px solid rgb(210, 210, 210);
+  margin: 2%;
+  padding: 2%;
+  font-size: 0.8rem;
+}
+
+#comment-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+#comment-author {
+  text-align: left;
+  font-weight: 550;
+}
+
+#comment-date {
+    font-style: italic;
+    color: grey;
+    font-weight: 300;
+}
+
+#comment-body{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    text-align: left;
+}
+
+#comment-votes{
+    text-align: right;
+    font-size: 0.9rem;
+}

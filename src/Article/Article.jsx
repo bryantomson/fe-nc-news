@@ -8,22 +8,24 @@ import ArticleVoteButtons from "../ArticleVoteButtons/ArticleVoteButtons";
 
 export default function Article({article, setArticle, isLoading, setIsLoading, setArticles}) {
 
+const [articleLoading, setArticleLoading] = useState(true)
+
     const {article_id} = useParams()
 
 useEffect(() => {
-  setIsLoading(true)
+  setArticleLoading(true)
   getArticleById(article_id).then((res) => {
     setArticle(res)
-    setIsLoading(false)
+    setArticleLoading(false)
 });
 }, []);
 
-if (isLoading){
+if (articleLoading){
     return <h1>Loading...</h1>
 } else return (
   <div id="article-container">
     <div id="article-header">
-      <div id="article-topic-head">{article.topic} </div>{" "}
+      <div id="article-topic-head">{article.topic} </div>
       <div id="article-date">{article.created_at.slice(0, -14)}</div>
     </div>
     <h1>{article.title}</h1>

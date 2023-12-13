@@ -59,7 +59,7 @@
   flex-shrink: 0;
   margin-left: 5%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
 }
 
@@ -68,9 +68,33 @@
   justify-content: space-between;
   flex-direction: row;
   flex-shrink: 0;
+
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.vote-buttons-error {
+  opacity: 30%;
+  padding-bottom: 0;
+}
+
+#vote-err-msg {
+  text-align: left;
+  font-size: 0.7rem;
+  color: crimson;
+  margin: 0;
 }
 
 .upvote,
 .downvote {
   padding-left: 3px;
+
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.votes-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

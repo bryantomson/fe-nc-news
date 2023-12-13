@@ -24,10 +24,10 @@ export default function ArticleTeaser({ article, setArticles }) {
             Comments: {article.comment_count}
           </div>
           <div className="teaser-item article-votes">
-            Votes: {article.votes}
-            <div className="vote-buttons">
+            
+      
              <ArticleVoteButtons article={article} setArticles={setArticles}/>
-              </div>
+             
             </div>
           </div>
         </div>

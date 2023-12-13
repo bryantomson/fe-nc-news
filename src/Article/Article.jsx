@@ -5,6 +5,8 @@ import "./Article.css"
 import CommentsList from "../CommentsList/CommentsList";
 import Collapsible from "../Collapsible/Collapsible";
 import ArticleVoteButtons from "../ArticleVoteButtons/ArticleVoteButtons";
+import CommentAdder from "../CommentAdder/CommentAdder";
+import Comments from "../Comments/Comments";
 
 export default function Article({article, setArticle, isLoading, setIsLoading, setArticles}) {
 
@@ -36,20 +38,16 @@ if (articleLoading){
     <p id="article-body">{article.body}</p>
 
     <div id="article-foot">
-      <div id="comments-in-article">
-        Comments ({article.comment_count})
-        <Collapsible>
-          <CommentsList
-            isLoading={isLoading}
-            setIsLoading={setIsLoading}
-            article={article}
-          />
-        </Collapsible>
-      </div>
       <div id="votes-in-article">
-        Votes: {article.votes}
-        <ArticleVoteButtons inArticle={true} article={article} setArticle={setArticle}/>
+        
+        <ArticleVoteButtons
+          inArticle={true}
+          article={article}
+          setArticle={setArticle}
+        />
       </div>
+   <Comments article={article} />
+     
     </div>
   </div>
 );

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { patchArticleById } from "../api";
 
 export default function ArticleVoteButtons({
@@ -6,7 +7,11 @@ export default function ArticleVoteButtons({
   setArticle,
   inArticle,
 }) {
+
+const [isErr, setIsErr] = useState(false)
+
   function incArticleVotes(inc) {
+    setIsErr(false)
     if (!inArticle) {
       setArticles((currArticles) => {
         return [...currArticles].map((currArticle) => {
@@ -20,6 +25,7 @@ export default function ArticleVoteButtons({
     }
 
     patchArticleById(article.article_id, inc).catch((err) => {
+      setIsErr(true)
       if (inArticle) {
         setArticle((currArticle) => {
           return { ...currArticle, votes: currArticle.votes - inc };
@@ -36,22 +42,30 @@ export default function ArticleVoteButtons({
 
   return (
     <>
-      <div
-        className="upvote"
-        onClick={() => {
-          incArticleVotes(1);
-        }}
-      >
-        ⬆️
+      <div className="votes-display">
+        Votes: {article.votes}
+        <div className="vote-buttons">
+          <div
+            className={`upvote ${isErr ? "vote-buttons-error" : ""}`}
+            onClick={() => {
+              incArticleVotes(1);
+            }}
+          >
+            ⬆️
+          </div>
+          <div
+            className={`downvote ${isErr ? "vote-buttons-error" : ""}`}
+            onClick={() => {
+              incArticleVotes(-1);
+            }}
+          >
+            ⬇️
+          </div>
+        </div>
       </div>
-      <div
-        className="downvote"
-        onClick={() => {
-          incArticleVotes(-1);
-        }}
-      >
-        ⬇️
-      </div>
+      <p id="vote-err-msg">
+       {isErr ? "There was a problem" : ""}
+      </p>
     </>
   );
 }

@@ -1,0 +1,20 @@
+.invalid-input {
+    border: 2px solid red;
+}
+
+.invalid-message{
+    font-size: 0.7rem;
+    margin-top: 0;
+    text-align: left;
+    color: rgb(255, 72, 0);
+}
+
+.submitted-button {
+    background-color: rgb(182, 207, 174);
+}
+
+.comment-input {
+    text-align: top;
+    min-height: 40px;
+    min-width: 100%;
+}

@@ -32,3 +32,9 @@ export function patchArticleById(article_id, inc) {
   return res.data.updated
   });
 }
+
+export function postCommentByArticleId(article_id, comment) {
+  return ncNewsAPI.post(`/articles/${article_id}/comments`, comment).then((res) => {
+    const { comment } = res.data;
+  });
+}

@@ -1,0 +1,7 @@
+#comments-container {
+    display: flex;
+    padding: 2%;
+    background-color: rgb(192, 241, 212);
+    flex-direction: column;
+    justify-content: center;
+}

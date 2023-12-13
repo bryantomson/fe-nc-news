@@ -40,7 +40,6 @@
 
 #votes-in-article{
     display: flex;
+    justify-content: flex-end;
     
-   
-
 }

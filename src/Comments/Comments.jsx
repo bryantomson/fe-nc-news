@@ -1,30 +1,25 @@
 import CommentAdder from "../CommentAdder/CommentAdder";
-import Collapsible from "../Collapsible/Collapsible";
+
 import CommentsList from "../CommentsList/CommentsList";
 import { useState } from "react";
+import "./Comments.css"
 
 export default function Comments({ article }) {
   const [comments, setComments] = useState([]);
-    const [displayedComment, setDisplayedComment] = useState([]);
-    const [hiddenComments, setHiddenComments] = useState([]);
 
 
   return (
     <div id="comments-container">
-      Comments ({article.comment_count})
+      <h2>Leave a comment</h2>
       <CommentAdder
         comments={comments}
         setComments={setComments}
         article={article}
-        setDisplayedComment={setDisplayedComment}
-        setHiddenComments={setHiddenComments}
       />
 
         <CommentsList
-        displayedComment={displayedComment}
-        setDisplayedComment={setDisplayedComment}
-        hiddenComments={hiddenComments}
-        setHiddenComments={setHiddenComments}
+        className={"comments-list"}
+       
           article={article}
           comments={comments}
           setComments={setComments}

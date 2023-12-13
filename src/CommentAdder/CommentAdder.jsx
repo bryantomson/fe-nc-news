@@ -2,7 +2,7 @@ import { postCommentByArticleId } from "../api";
 import "./CommentAdder.css";
 import { useState } from "react";
 
-export default function CommentAdder({ comments, setComments, article, setDisplayedComment, setHiddenComments }) {
+export default function CommentAdder({  setComments, article }) {
   const [newComment, setNewComment] = useState("");
   const [isPending, setIsPending] = useState(false);
   const [isInvalid, setIsInvalid] = useState(false);
@@ -38,8 +38,7 @@ export default function CommentAdder({ comments, setComments, article, setDispla
         ];
       })
     );
-    setHiddenComments([...comments])
-    setDisplayedComment([optimisticComment])
+
 
     setNewComment("");
   }
@@ -51,19 +50,23 @@ export default function CommentAdder({ comments, setComments, article, setDispla
 
   return (
     <form
+    className="comment-form"
       onSubmit={newComment.length ? handleCommentSubmit : handleEmptySubmit}
     >
       <textarea
+  
         type="text"
         placeholder="Add a comment..."
         onChange={handleCommentChange}
         value={newComment}
         className={`comment-input  ${isInvalid ? "invalid-input" : ""}`}
       ></textarea>
-      <button className={isPending ? "submitted-button" : ""} disabled={isPending ? true : false}>{isPending ? "Comment submitted" : "Submit comment"}</button>
-      <p className="invalid-message">
-        {isInvalid ? "Please enter a comment" : ""}
-      </p>
+      <div className="sumbit-container">
+        <button className={`sumbit-button ${isPending ? "submitted-button" : ""}`} disabled={isPending ? true : false}>{isPending ? "Comment submitted" : "Submit comment"}</button>
+        <p className="invalid-message">
+          {isInvalid ? "Please enter a comment" : ""}
+        </p>
+      </div>
     </form>
   );
 }

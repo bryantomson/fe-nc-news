@@ -4,7 +4,7 @@ import "./CommentsList.css";
 import { useState, useEffect } from "react";
 import Collapsible from "../Collapsible/Collapsible";
 
-export default function CommentsList({ article, comments, setComments, }) {
+export default function CommentsList({ article, setComments, comments}) {
   const [commentsLoading, setCommentsLoading] = useState(true);
 
   useEffect(() => {
@@ -21,14 +21,14 @@ export default function CommentsList({ article, comments, setComments, }) {
       <ul className="comments-list">
         {comments.slice(0,-(comments.length-1)).map((comment) => {
           return (
-            <li key={comment.comment_id}> {<Comment comment={comment} />}</li>
+            <li key={comment.comment_id}> {<Comment setComments={setComments} comment={comment} />}</li>
           );
         })}
 
         <Collapsible item="comment" length={comments.length - 1}>
           {comments.slice(1).map((comment) => {
             return (
-              <li key={comment.comment_id}> {<Comment comment={comment} />}</li>
+              <li key={comment.comment_id}> {<Comment setComments={setComments} comment={comment} />}</li>
             );
           })}
         </Collapsible>

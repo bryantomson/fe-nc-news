@@ -1,11 +1,15 @@
 import { postCommentByArticleId } from "../api";
 import "./CommentAdder.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../UserContext";
+import SignIn from "../SignIn/SignIn";
 
-export default function CommentAdder({  setComments, article }) {
+export default function CommentAdder({ setComments, article }) {
   const [newComment, setNewComment] = useState("");
   const [isPending, setIsPending] = useState(false);
   const [isInvalid, setIsInvalid] = useState(false);
+  const { user, setUser } = useContext(UserContext);
+
 
   function handleCommentChange(e) {
     setIsInvalid(false);
@@ -15,7 +19,7 @@ export default function CommentAdder({  setComments, article }) {
   function handleCommentSubmit(e) {
     e.preventDefault();
     const commentToPost = {
-      username: "tickle122",
+      username: user.username,
       body: newComment,
     };
 
@@ -28,17 +32,14 @@ export default function CommentAdder({  setComments, article }) {
 
     setIsPending(true);
 
-    postCommentByArticleId(article.article_id, commentToPost).then(() =>
+    postCommentByArticleId(article.article_id, commentToPost).then((resComment) =>{
+         setIsPending(false);
       setComments((currComments) => {
-        setIsPending(false);
+   
 
-        return [
-          optimisticComment,
-          ...currComments,
-        ];
-      })
+        return [resComment, ...currComments];
+      })}
     );
-
 
     setNewComment("");
   }
@@ -48,13 +49,16 @@ export default function CommentAdder({  setComments, article }) {
     e.preventDefault();
   }
 
-  return (
+  if(!user){
+    return <p>
+    Please sign in to make a comment <SignIn inComments={true} />
+    </p>
+  }else return (
     <form
-    className="comment-form"
+      className="comment-form"
       onSubmit={newComment.length ? handleCommentSubmit : handleEmptySubmit}
     >
       <textarea
-  
         type="text"
         placeholder="Add a comment..."
         onChange={handleCommentChange}
@@ -62,7 +66,12 @@ export default function CommentAdder({  setComments, article }) {
         className={`comment-input  ${isInvalid ? "invalid-input" : ""}`}
       ></textarea>
       <div className="sumbit-container">
-        <button className={`sumbit-button ${isPending ? "submitted-button" : ""}`} disabled={isPending ? true : false}>{isPending ? "Comment submitted" : "Submit comment"}</button>
+        <button
+          className={`sumbit-button ${isPending ? "submitted-button" : ""}`}
+          disabled={isPending ? true : false}
+        >
+          {isPending ? "Comment submitted" : "Submit comment"}
+        </button>
         <p className="invalid-message">
           {isInvalid ? "Please enter a comment" : ""}
         </p>

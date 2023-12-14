@@ -1,0 +1,16 @@
+#delete-comment-err-msg{
+font-size: 0.7rem;
+  color: crimson;
+}
+
+#delete-comment-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    justify-content: flex-end;
+}
+
+.deleted-comment-button{
+    opacity: 40%;
+}

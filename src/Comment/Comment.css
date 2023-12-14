@@ -35,3 +35,35 @@
     text-align: right;
     font-size: 0.9rem;
 }
+
+#comment-bottom{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#comment-delete{
+  width: fit-content;
+}
+
+.tooltiptext{
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.delete-comment-button{
+  cursor: pointer;
+}
+
+.delete-comment-button:hover .tooltiptext {
+  visibility: visible;
+}

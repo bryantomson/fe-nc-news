@@ -1,7 +1,7 @@
 #comments-container {
     display: flex;
     padding: 2%;
-    background-color: rgb(192, 241, 212);
+    background-color: #6face9;
     flex-direction: column;
     justify-content: center;
 }

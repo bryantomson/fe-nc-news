@@ -36,5 +36,19 @@ export function patchArticleById(article_id, inc) {
 export function postCommentByArticleId(article_id, comment) {
   return ncNewsAPI.post(`/articles/${article_id}/comments`, comment).then((res) => {
     const { comment } = res.data;
+    return comment
   });
 }
+
+export function getUserByUsername(username) {
+  return ncNewsAPI.get(`/users/${username}`).then((res)=> {
+    return res.data.user
+  })
+}
+
+export function deleteCommentById(comment_id){
+return ncNewsAPI.delete(`/comments/${comment_id}`).then((res)=>{
+  return res.status})
+}
+
+// pi/comments/:comment_id

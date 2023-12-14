@@ -8,7 +8,7 @@ export default function ArticleTeaser({ article, setArticles }) {
   return (
     <div className="article-teaser-container">
       <div>
-        <Link className="article-link" to={`${article.article_id}`}>
+        <Link className="article-link" to={`/articles/${article.article_id}`}>
           <img className="article-image" src={article.article_img_url}></img>
           <div className="article-title">{article.title}</div>
         </Link>

@@ -50,9 +50,12 @@ export default function CommentAdder({ setComments, article }) {
   }
 
   if(!user){
-    return <p>
-    Please sign in to make a comment <SignIn inComments={true} />
-    </p>
+    return <div>
+      <p>
+      Please sign in to make a comment</p>
+      <SignIn inComments={true} />
+    </div>
+    
   }else return (
     <form
       className="comment-form"

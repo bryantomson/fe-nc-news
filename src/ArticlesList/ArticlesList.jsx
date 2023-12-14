@@ -3,16 +3,25 @@ import { getArticles } from "../api";
 import { useEffect, useState } from "react";
 import ArticleTeaser from "../ArticleTeaser/ArticleTeaser";
 
-export default function ArticlesList({ articles, setArticles, isLoading, setIsLoading }) {
-
-
+export default function ArticlesList({
+  setIsTopicFetchErr,
+  topic,
+  articles,
+  setArticles,
+  isLoading,
+  setIsLoading,
+}) {
   useEffect(() => {
-    setIsLoading(true)
-    getArticles().then((res) => {
-      setArticles(res);
-      setIsLoading(false);
-    });
-  }, []);
+    setIsLoading(true);
+    getArticles(topic)
+      .then((res) => {
+        setArticles(res);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsTopicFetchErr(true)
+      });
+  }, [topic]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;

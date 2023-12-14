@@ -4,7 +4,7 @@ import { UserContext } from "../UserContext";
 import { useContext } from "react";
 import SignIn from "../SignIn/SignIn";
 
-export default function Header() {
+export default function Header({topics}) {
   const { user, setUser } = useContext(UserContext);
 
   return (
@@ -19,7 +19,7 @@ export default function Header() {
         </div>
       </div>
       <div>
-        <HeaderNav />
+        <HeaderNav topics={topics}/>
       </div>
     </div>
   );

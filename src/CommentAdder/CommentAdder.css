@@ -35,3 +35,8 @@ flex-direction: column;
     min-width: 50%;
     max-width: 90%;
 }
+
+.comment-input {
+    display: flex;
+    flex-direction: column;
+}

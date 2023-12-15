@@ -7,6 +7,7 @@ import Collapsible from "../Collapsible/Collapsible";
 export default function CommentsList({ article, setComments, comments}) {
   const [commentsLoading, setCommentsLoading] = useState(true);
 
+
   useEffect(() => {
     getCommentsByArticleId(article.article_id).then((res) => {
       setComments(res);

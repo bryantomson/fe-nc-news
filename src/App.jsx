@@ -5,14 +5,16 @@ import Home from "./Home/Home";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Article from "./Article/Article";
 import { UserProvider } from "./UserContext";
-import TopicView from "./TopicView/TopicView";
+import ArticleListView from "./ArticleListView/ArticleListView";
 import { getTopics } from "./api";
+import ErrorPage from "./ErrorPage/ErrorPage";
 
 function App() {
   const [articles, setArticles] = useState([]);
   const [article, setArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [topics, setTopics] = useState([])
+  const [errMsg, setErrMsg] = useState()
 
 useEffect(() => {
     getTopics().then((topics)=>{
@@ -27,10 +29,13 @@ useEffect(() => {
       <UserProvider>
         <Header topics={topics} />
         <Routes className="body">
+     
           <Route
-            path="/"
+            path="/:topic"
             element={
-              <Home
+              <ArticleListView
+                errMsg={errMsg}
+                setErrMsg={setErrMsg}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
                 articles={articles}
@@ -39,9 +44,11 @@ useEffect(() => {
             }
           />
           <Route
-            path="/:topic"
+            path="/"
             element={
-              <TopicView
+              <ArticleListView
+                errMsg={errMsg}
+                setErrMsg={setErrMsg}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
                 articles={articles}
@@ -54,6 +61,8 @@ useEffect(() => {
             element={
               <div className="body">
                 <Article
+                  errMsg={errMsg}
+                  setErrMsg={setErrMsg}
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}
                   article={article}
@@ -63,6 +72,8 @@ useEffect(() => {
               </div>
             }
           />
+          <Route path="*"
+          element={<ErrorPage errMsg={{status: 404, msg: "page does not exist"}}/>}/>
         </Routes>
       </UserProvider>
     </BrowserRouter>

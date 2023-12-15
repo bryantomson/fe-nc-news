@@ -67,3 +67,7 @@
 .delete-comment-button:hover .tooltiptext {
   visibility: visible;
 }
+
+.comment-pending-delete{
+  opacity: 40%;
+}

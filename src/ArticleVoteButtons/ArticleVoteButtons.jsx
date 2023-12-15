@@ -7,15 +7,16 @@ export default function ArticleVoteButtons({
   setArticle,
   inArticle,
 }) {
-
-const [isErr, setIsErr] = useState(false)
+  const [isErr, setIsErr] = useState(false);
 
   function incArticleVotes(inc) {
-    setIsErr(false)
+    setIsErr(false);
     if (!inArticle) {
       setArticles((currArticles) => {
         return [...currArticles].map((currArticle) => {
-          return { ...currArticle, votes: currArticle.votes + inc };
+          if (currArticle.article_id === article.article_id) {
+            return { ...currArticle, votes: currArticle.votes + inc };
+          } else return { ...currArticle };
         });
       });
     }
@@ -25,7 +26,7 @@ const [isErr, setIsErr] = useState(false)
     }
 
     patchArticleById(article.article_id, inc).catch((err) => {
-      setIsErr(true)
+      setIsErr(true);
       if (inArticle) {
         setArticle((currArticle) => {
           return { ...currArticle, votes: currArticle.votes - inc };
@@ -33,7 +34,9 @@ const [isErr, setIsErr] = useState(false)
       } else {
         setArticles((currArticles) => {
           return [...currArticles].map((currArticle) => {
-            return { ...currArticle, votes: currArticle.votes - inc };
+            if (currArticle.article_id === article.article_id) {
+              return { ...currArticle, votes: currArticle.votes - inc };
+            } else return { ...currArticle };
           });
         });
       }
@@ -63,9 +66,7 @@ const [isErr, setIsErr] = useState(false)
           </div>
         </div>
       </div>
-      <p id="vote-err-msg">
-       {isErr ? "There was a problem" : ""}
-      </p>
+      <p id="vote-err-msg">{isErr ? "There was a problem" : ""}</p>
     </>
   );
 }
